@@ -1,5 +1,6 @@
 imports:
     - { resource: 'local/' }
+    - { resource: doctrine.yaml }
     - { resource: nelmio_cors.yaml }
 
 pimcore:
