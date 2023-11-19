@@ -1,0 +1,11 @@
+prod:
+    is_prod: true
+    stage: prod
+    hostname: 185.44.64.221
+    user: www-data
+    port: 22
+    forwardAgent: true
+    multiplexing: true
+    deploy_path: /var/www/html
+    repository: git@github.com:daniel-travix/frs-backend.git
+    branch: main
