@@ -1,0 +1,34 @@
+pimcore:
+    custom_views:
+        definitions:
+            f0cbb0f9-a1de-80e2-fc53-aad7250c2bfc:
+                name: Rezepte
+                treetype: object
+                position: right
+                rootfolder: /Rezepte
+                showroot: true
+                sort: 2
+                treeContextMenu:
+                    object:
+                        items:
+                            add: true
+                            addFolder: true
+                            importCsv: true
+                            cut: true
+                            copy: true
+                            paste: true
+                            delete: true
+                            rename: true
+                            reload: true
+                            publish: true
+                            unpublish: true
+                            searchAndMove: true
+                            lock: true
+                            unlock: true
+                            lockAndPropagate: true
+                            unlockAndPropagate: true
+                            changeChildrenSortBy: true
+                classes: 'recipe,rescipeStep'
+                joins: {  }
+                id: f0cbb0f9-a1de-80e2-fc53-aad7250c2bfc
+                icon: /mdi/nutrition.svg

@@ -1,0 +1,11 @@
+{
+  "appId": "de.frs.app",
+  "appName": "frs",
+  "bundledWebRuntime": false,
+  "webDir": "dist",
+  "plugins": {
+    "SplashScreen": {
+      "launchShowDuration": 0
+    }
+  }
+}

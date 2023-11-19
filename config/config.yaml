@@ -1,6 +1,6 @@
 imports:
     - { resource: 'local/' }
-
+    - { resource: nelmio_cors.yaml }
 
 pimcore:
 

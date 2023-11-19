@@ -1,0 +1,51 @@
+query {
+    meal: getMeal(id: 20) {
+        name
+        desciption
+        outro
+        images {
+            image {
+                fullpath(thumbnail: "default")
+            }
+        }
+        recipes {
+            element {
+                name
+                desciption
+                images {
+                    image {
+                        fullpath(thumbnail: "default")
+                    }
+                }
+                steps {
+                    element {
+                        name
+                        desciption
+                        images {
+                            image {
+                                fullpath(thumbnail: "default")
+                            }
+                        }
+                        ingredientList {
+                            ... on fieldcollection_stepIngredient {
+                                amount {
+                                    toString
+                                    value
+                                    unit {
+                                        longname
+                                        abbreviation
+                                    }
+                                }
+                                ingredient {
+                                    ... on object_ingredient {
+                                        name
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

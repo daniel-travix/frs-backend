@@ -24,11 +24,19 @@ services:
             - MYSQL_USER=pimcore
             - MYSQL_PASSWORD=pimcore
         healthcheck:
-            test: [CMD-SHELL, "mysql -h db -u$$MYSQL_USER -p$$MYSQL_PASSWORD $$MYSQL_DATABASE -e 'SHOW TABLES;'"]
+            test: [ CMD-SHELL, "mysql -h db -u$$MYSQL_USER -p$$MYSQL_PASSWORD $$MYSQL_DATABASE -e 'SHOW TABLES;'" ]
             interval: 10s
             retries: 6
             start_period: 1m
             timeout: 3s
+
+    phpmyadmin:
+        image: phpmyadmin
+        restart: always
+        ports:
+            - 3322:80
+        environment:
+            - PMA_ARBITRARY=1
     nginx:
         container_name: '${NAME}-nginx'
         image: 'nginx:stable-alpine'
@@ -42,6 +50,8 @@ services:
             VIRTUAL_PORT: '80'
         links:
             - 'php:php'
+        ports:
+            - "8989:80"
     php:
         container_name: '${NAME}-php'
         user: '1000:1000'

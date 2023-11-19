@@ -1,0 +1,34 @@
+pimcore:
+    custom_views:
+        definitions:
+            a715bd5f-cbf2-28c4-c97f-b912ba130288:
+                name: Gerichte
+                treetype: object
+                position: right
+                rootfolder: /Gerichte
+                showroot: true
+                sort: 1
+                treeContextMenu:
+                    object:
+                        items:
+                            add: true
+                            addFolder: true
+                            importCsv: true
+                            cut: true
+                            copy: true
+                            paste: true
+                            delete: true
+                            rename: true
+                            reload: true
+                            publish: true
+                            unpublish: true
+                            searchAndMove: true
+                            lock: true
+                            unlock: true
+                            lockAndPropagate: true
+                            unlockAndPropagate: true
+                            changeChildrenSortBy: true
+                classes: meal
+                joins: {  }
+                id: a715bd5f-cbf2-28c4-c97f-b912ba130288
+                icon: /mdi/food-variant.svg

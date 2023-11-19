@@ -1,0 +1,62 @@
+pimcore:
+    perspectives:
+        definitions:
+            default:
+                elementTree:
+                    -
+                        type: customview
+                        id: f0cbb0f9-a1de-80e2-fc53-aad7250c2bfc
+                        position: left
+                        expanded: false
+                        hidden: false
+                        sort: 0
+                    -
+                        type: customview
+                        id: a715bd5f-cbf2-28c4-c97f-b912ba130288
+                        position: left
+                        expanded: false
+                        hidden: false
+                        sort: 1
+                    -
+                        type: customview
+                        id: 26d151c0-ab05-70c4-60a2-d5dc8592eae2
+                        position: left
+                        expanded: false
+                        hidden: false
+                        sort: 2
+                    -
+                        type: assets
+                        position: right
+                        expanded: false
+                        hidden: false
+                        sort: 0
+                    -
+                        type: objects
+                        position: right
+                        expanded: false
+                        hidden: false
+                        sort: 1
+                iconCls: pimcore_nav_icon_perspective
+                icon: null
+                dashboards:
+                    predefined:
+                        welcome:
+                            positions:
+                                -
+                                    -
+                                        id: 1
+                                        type: pimcore.layout.portlets.modificationStatistic
+                                        config: null
+                                    -
+                                        id: 2
+                                        type: pimcore.layout.portlets.modifiedAssets
+                                        config: null
+                                -
+                                    -
+                                        id: 3
+                                        type: pimcore.layout.portlets.modifiedObjects
+                                        config: null
+                                    -
+                                        id: 4
+                                        type: pimcore.layout.portlets.modifiedDocuments
+                                        config: null

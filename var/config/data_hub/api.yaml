@@ -1,0 +1,194 @@
+pimcore_data_hub:
+    configurations:
+        api:
+            general:
+                active: true
+                type: graphql
+                name: api
+                description: ''
+                group: ''
+                sqlObjectCondition: ''
+                modificationDate: 1700394235
+                path: null
+                createDate: 1700301972
+            schema:
+                queryEntities:
+                    ingredient:
+                        id: ingredient
+                        name: ingredient
+                        columnConfig:
+                            columns:
+                                -
+                                    attributes:
+                                        attribute: name
+                                        label: Name
+                                        dataType: input
+                                    isOperator: false
+                    rescipeStep:
+                        id: rescipeStep
+                        name: rescipeStep
+                        columnConfig:
+                            columns:
+                                -
+                                    attributes:
+                                        attribute: name
+                                        label: Name
+                                        dataType: input
+                                    isOperator: false
+                                -
+                                    attributes:
+                                        attribute: desciption
+                                        label: Beschreibung
+                                        dataType: wysiwyg
+                                    isOperator: false
+                                -
+                                    attributes:
+                                        attribute: ingredients
+                                        label: Zutaten
+                                        dataType: advancedManyToManyObjectRelation
+                                    isOperator: false
+                                -
+                                    attributes:
+                                        attribute: ingredientList
+                                        label: 'Ingredient List'
+                                        dataType: fieldcollections
+                                    isOperator: false
+                                -
+                                    attributes:
+                                        attribute: images
+                                        label: Bilder
+                                        dataType: imageGallery
+                                    isOperator: false
+                    recipe:
+                        id: recipe
+                        name: recipe
+                        columnConfig:
+                            columns:
+                                -
+                                    attributes:
+                                        attribute: name
+                                        label: Name
+                                        dataType: input
+                                    isOperator: false
+                                -
+                                    attributes:
+                                        attribute: desciption
+                                        label: Beschreibung
+                                        dataType: wysiwyg
+                                    isOperator: false
+                                -
+                                    attributes:
+                                        attribute: steps
+                                        label: Schritte
+                                        dataType: advancedManyToManyObjectRelation
+                                    isOperator: false
+                                -
+                                    attributes:
+                                        attribute: images
+                                        label: Bilder
+                                        dataType: imageGallery
+                                    isOperator: false
+                    meal:
+                        id: meal
+                        name: meal
+                        columnConfig:
+                            columns:
+                                -
+                                    attributes:
+                                        attribute: name
+                                        label: Name
+                                        dataType: input
+                                    isOperator: false
+                                -
+                                    attributes:
+                                        attribute: desciption
+                                        label: Beschreibung
+                                        dataType: wysiwyg
+                                    isOperator: false
+                                -
+                                    attributes:
+                                        attribute: outro
+                                        label: Ausleitungstext
+                                        dataType: wysiwyg
+                                    isOperator: false
+                                -
+                                    attributes:
+                                        attribute: recipes
+                                        label: Rezepte
+                                        dataType: advancedManyToManyObjectRelation
+                                    isOperator: false
+                                -
+                                    attributes:
+                                        attribute: images
+                                        label: Bilder
+                                        dataType: imageGallery
+                                    isOperator: false
+                mutationEntities: {  }
+                specialEntities:
+                    document:
+                        read: false
+                        create: false
+                        update: false
+                        delete: false
+                    document_folder:
+                        read: false
+                        create: false
+                        update: false
+                        delete: false
+                    asset:
+                        read: true
+                        create: false
+                        update: false
+                        delete: false
+                    asset_folder:
+                        read: false
+                        create: false
+                        update: false
+                        delete: false
+                    asset_listing:
+                        read: false
+                        create: false
+                        update: false
+                        delete: false
+                    object_folder:
+                        read: false
+                        create: false
+                        update: false
+                        delete: false
+                    translation:
+                        read: false
+                        create: false
+                        update: false
+                        delete: false
+                    translation_listing:
+                        read: false
+                        create: false
+                        update: false
+                        delete: false
+            security:
+                method: datahub_apikey
+                apikey:
+                    - d43eef154c15bb04e1529d5724cdd877
+                skipPermissionCheck: false
+                disableIntrospection: false
+            workspaces:
+                asset:
+                    -
+                        read: true
+                        cpath: /
+                        create: false
+                        update: false
+                        delete: false
+                        id: extModel10233-1
+                document: {  }
+                object:
+                    -
+                        read: true
+                        cpath: /
+                        create: false
+                        update: false
+                        delete: false
+                        id: extModel10259-1
+            permissions:
+                user: {  }
+                role: {  }

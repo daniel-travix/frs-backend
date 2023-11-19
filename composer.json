@@ -12,10 +12,13 @@
   },
   "prefer-stable": true,
   "require": {
+    "nelmio/cors-bundle": "^2.3",
+    "pimcore/admin-ui-classic-bundle": "^1.2",
+    "pimcore/data-hub": "^1.6",
+    "pimcore/perspective-editor": "^1.7",
     "pimcore/pimcore": "^11.0.4",
-    "pimcore/admin-ui-classic-bundle": "^1.0",
-    "symfony/runtime": "^6.2",
-    "symfony/dotenv": "^6.2"
+    "symfony/dotenv": "^6.2",
+    "symfony/runtime": "^6.2"
   },
   "require-dev": {
     "codeception/codeception": "^5.0.3",

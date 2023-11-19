@@ -1,0 +1,34 @@
+pimcore:
+    custom_views:
+        definitions:
+            26d151c0-ab05-70c4-60a2-d5dc8592eae2:
+                name: Zutaten
+                treetype: object
+                position: right
+                rootfolder: /Zutaten
+                showroot: true
+                sort: 3
+                treeContextMenu:
+                    object:
+                        items:
+                            add: true
+                            addFolder: true
+                            importCsv: true
+                            cut: true
+                            copy: true
+                            paste: true
+                            delete: true
+                            rename: true
+                            reload: true
+                            publish: true
+                            unpublish: true
+                            searchAndMove: true
+                            lock: true
+                            unlock: true
+                            lockAndPropagate: true
+                            unlockAndPropagate: true
+                            changeChildrenSortBy: true
+                classes: ingredient
+                joins: {  }
+                id: 26d151c0-ab05-70c4-60a2-d5dc8592eae2
+                icon: /mdi/barley.svg

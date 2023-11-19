@@ -1,0 +1,10 @@
+pimcore:
+    objects:
+        select_options:
+            definitions:
+                DefaultSelect:
+                    id: DefaultSelect
+                    group: ''
+                    useTraits: ''
+                    implementsInterfaces: ''
+                    selectOptions: {  }

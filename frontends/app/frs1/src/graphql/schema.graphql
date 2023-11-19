@@ -1,0 +1,833 @@
+# This file was generated. Do not edit manually.
+
+schema {
+    query: Query
+}
+
+interface element {
+    id: ID
+}
+
+union AnyDocumentTarget = document_email | document_folder | document_hardlink | document_link | document_page | document_snippet
+
+union AnyTarget = asset | object_ingredient | object_meal | object_recipe | object_rescipeStep | object_stepIngredient
+
+union Document = document_email | document_hardlink | document_link | document_page | document_snippet
+
+union DocumentElement = document_editableAreablock | document_editableBlock | document_editableCheckbox | document_editableDate | document_editableEmbed | document_editableImage | document_editableInput | document_editableLink | document_editableMultiselect | document_editableNumeric | document_editablePdf | document_editableRelation | document_editableRelations | document_editableScheduledblock | document_editableSelect | document_editableTable | document_editableTextarea | document_editableVideo | document_editableWysiwyg
+
+union ElementProperty = property_asset | property_checkbox | property_object | property_select | property_text
+
+union HotspotMetadata = property_asset | property_checkbox | property_document | property_object | property_text | property_textarea
+
+union asset_tree = asset | asset_folder
+
+union document_tree = document_email | document_folder | document_hardlink | document_link | document_page | document_snippet
+
+"pseudo class for field ingredient"
+union fieldcollection_stepIngredient_ingredient = object_ingredient
+
+union hotspot_metadata_object = asset | object_ingredient | object_meal | object_recipe | object_rescipeStep
+
+union object_rescipeStep_ingredientList = fieldcollection_stepIngredient
+
+union object_tree = object_ingredient | object_meal | object_recipe | object_rescipeStep
+
+type HotspotCrop {
+    cropHeight: Float
+    cropLeft: Float
+    cropPercent: Boolean
+    cropTop: Float
+    cropWidth: Float
+}
+
+type HotspotHotspot {
+    data(
+        "comma seperated list of key names"
+        keys: [String]
+    ): [HotspotMetadata]
+    height: Float
+    left: Float
+    name: String
+    top: Float
+    width: Float
+}
+
+type HotspotMarker {
+    data(
+        "comma seperated list of key names"
+        keys: [String]
+    ): [HotspotMetadata]
+    left: Float
+    name: String
+    top: Float
+}
+
+type IngredientConnection {
+    edges: [IngredientEdge]
+    "The total count of all queryable objects for this schema listing"
+    totalCount: Int
+}
+
+type IngredientEdge {
+    cursor: String
+    node: object_ingredient
+}
+
+type MealConnection {
+    edges: [MealEdge]
+    "The total count of all queryable objects for this schema listing"
+    totalCount: Int
+}
+
+type MealEdge {
+    cursor: String
+    node: object_meal
+}
+
+type QuantityValue {
+    toString(language: String): String
+    unit: QuantityValueUnit
+    value: Float
+}
+
+type QuantityValueUnit {
+    abbreviation: String
+    id: ID
+    longname: String
+}
+
+type Query {
+    getAsset(defaultLanguage: String, fullpath: String, id: Int): asset
+    getIngredient(defaultLanguage: String, fullpath: String, id: Int): object_ingredient
+    getIngredientListing(
+        after: Int,
+        defaultLanguage: String,
+        filter: String,
+        first: Int,
+        "Comma separated list of fullpath"
+        fullpaths: String,
+        ids: String,
+        published: Boolean,
+        sortBy: [String],
+        "Sort by ASC or DESC, use the same position as the sortBy argument for each column to sort by"
+        sortOrder: [String],
+        "Comma separated list of tag names"
+        tags: String
+    ): IngredientConnection
+    getMeal(defaultLanguage: String, fullpath: String, id: Int): object_meal
+    getMealListing(
+        after: Int,
+        defaultLanguage: String,
+        filter: String,
+        first: Int,
+        "Comma separated list of fullpath"
+        fullpaths: String,
+        ids: String,
+        published: Boolean,
+        sortBy: [String],
+        "Sort by ASC or DESC, use the same position as the sortBy argument for each column to sort by"
+        sortOrder: [String],
+        "Comma separated list of tag names"
+        tags: String
+    ): MealConnection
+    getRecipe(defaultLanguage: String, fullpath: String, id: Int): object_recipe
+    getRecipeListing(
+        after: Int,
+        defaultLanguage: String,
+        filter: String,
+        first: Int,
+        "Comma separated list of fullpath"
+        fullpaths: String,
+        ids: String,
+        published: Boolean,
+        sortBy: [String],
+        "Sort by ASC or DESC, use the same position as the sortBy argument for each column to sort by"
+        sortOrder: [String],
+        "Comma separated list of tag names"
+        tags: String
+    ): RecipeConnection
+    getRescipeStep(defaultLanguage: String, fullpath: String, id: Int): object_rescipeStep
+    getRescipeStepListing(
+        after: Int,
+        defaultLanguage: String,
+        filter: String,
+        first: Int,
+        "Comma separated list of fullpath"
+        fullpaths: String,
+        ids: String,
+        published: Boolean,
+        sortBy: [String],
+        "Sort by ASC or DESC, use the same position as the sortBy argument for each column to sort by"
+        sortOrder: [String],
+        "Comma separated list of tag names"
+        tags: String
+    ): RescipeStepConnection
+}
+
+type RecipeConnection {
+    edges: [RecipeEdge]
+    "The total count of all queryable objects for this schema listing"
+    totalCount: Int
+}
+
+type RecipeEdge {
+    cursor: String
+    node: object_recipe
+}
+
+type RescipeStepConnection {
+    edges: [RescipeStepEdge]
+    "The total count of all queryable objects for this schema listing"
+    totalCount: Int
+}
+
+type RescipeStepEdge {
+    cursor: String
+    node: object_rescipeStep
+}
+
+type asset implements element {
+    _siblings: [asset_tree]
+    children: [asset_tree]
+    creationDate: Int
+    data(format: String, thumbnail: String): String
+    dimensions(format: String, thumbnail: String): dimensions
+    duration: Float
+    embeddedMetaInfo: [asset_embeddedMetaInfo_item]
+    filename: String
+    filesize: Int
+    fullpath(format: String, thumbnail: String): String
+    id: ID
+    metadata(ignore_language: Boolean, language: String): [asset_metadata_item]
+    mimetype: String
+    modificationDate: Int
+    parent: asset_tree
+    properties(
+        "comma separated list of key names"
+        keys: [String]
+    ): [ElementProperty]
+    resolutions(
+        format: String,
+        thumbnail: String!,
+        "List of resolution types [2, 5, ...]"
+        types: [Float] = [2.0]
+    ): [resolutions]
+    srcset(format: String, thumbnail: String!): [srcset]
+    tags(name: String): [element_tag]
+    type: String
+}
+
+type asset_embeddedMetaInfo_item {
+    name: String
+    value: String
+}
+
+type asset_folder {
+    _siblings: [asset_tree]
+    children: [asset_tree]
+    creationDate: Int
+    filename: String
+    fullpath(thumbnail: String): String
+    id: ID
+    modificationDate: Int
+    parent: asset_folder
+    properties(
+        "comma seperated list of key names"
+        keys: [String]
+    ): [ElementProperty]
+}
+
+type asset_metadata_item {
+    data: String
+    language: String
+    name: String
+    type: String
+}
+
+type dimensions {
+    height: Int
+    width: Int
+}
+
+type document_editableAreablock {
+    _editableName: String
+    _editableType: String
+    data: [document_editableAreablock_data]
+}
+
+type document_editableAreablock_data {
+    _editableName: String
+    _editableType: String
+    hidden: Boolean
+    key: String
+    type: String
+}
+
+type document_editableBlock {
+    _editableName: String
+    _editableType: String
+    indices: [Int]
+}
+
+type document_editableCheckbox {
+    _editableName: String
+    _editableType: String
+    checked: Boolean
+}
+
+type document_editableDate {
+    _editableName: String
+    _editableType: String
+    formatted(
+        "see Carbon::format"
+        format: String!
+    ): String
+    timestamp: Int
+}
+
+type document_editableEmbed {
+    _editableName: String
+    _editableType: String
+    url: String
+}
+
+type document_editableImage {
+    _editableName: String
+    _editableType: String
+    alt: String
+    crop: HotspotCrop
+    hotspots: [HotspotHotspot]
+    image: asset
+    marker: [HotspotMarker]
+}
+
+type document_editableInput {
+    _editableName: String
+    _editableType: String
+    text: String
+}
+
+type document_editableLink {
+    _editableName: String
+    _editableType: String
+    data: document_editableLink_data
+}
+
+type document_editableLink_data {
+    _editableName: String
+    _editableType: String
+    accesskey: String
+    anchor: String
+    attributes: String
+    class: String
+    internal: Boolean
+    internalId: Int
+    internalType: String
+    parameters: String
+    path: String
+    relation: String
+    tabindex: String
+    target: AnyTarget
+    text: String
+    title: String
+    windowTarget: String
+}
+
+type document_editableMultiselect {
+    _editableName: String
+    _editableType: String
+    selections: [String]
+}
+
+type document_editableNumeric {
+    _editableName: String
+    _editableType: String
+    number: String
+}
+
+type document_editablePdf {
+    _editableName: String
+    _editableType: String
+    pdf: asset
+}
+
+type document_editableRelation {
+    _editableName: String
+    _editableType: String
+    id: Int
+    relation: AnyTarget
+    subtype: String
+    type: String
+}
+
+type document_editableRelations {
+    _editableName: String
+    _editableType: String
+    relations: [AnyTarget]
+}
+
+type document_editableScheduledblock {
+    _editableName: String
+    _editableType: String
+    data: [document_editableScheduledblock_data]
+}
+
+type document_editableScheduledblock_data {
+    _editableName: String
+    _editableType: String
+    date: Int
+    key: String
+}
+
+type document_editableSelect {
+    _editableName: String
+    _editableType: String
+    text: String
+}
+
+type document_editableTable {
+    _editableName: String
+    _editableType: String
+    text: String
+}
+
+type document_editableTextarea {
+    _editableName: String
+    _editableType: String
+    text: String
+}
+
+type document_editableVideo {
+    _editableName: String
+    _editableType: String
+    description: String
+    id: String
+    posterAsset: asset
+    title: String
+    type: String
+    videoAsset: asset
+}
+
+type document_editableWysiwyg {
+    _editableName: String
+    _editableType: String
+    text: String
+}
+
+type document_email implements element {
+    _siblings: [document_tree]
+    action: String
+    bcc: String
+    cc: String
+    children: [document_tree]
+    controller: String
+    creationDate: Int
+    from: String
+    fullpath: String
+    id: ID
+    modificationDate: Int
+    parent: document_tree
+    properties(
+        "comma seperated list of key names"
+        keys: [String]
+    ): [ElementProperty]
+    published: Boolean
+    replyTo: String
+    subject: String
+    tags(name: String): [element_tag]
+    template: String
+    to: String
+    translations(defaultLanguage: String): [document_translation]
+    type: String
+}
+
+type document_folder {
+    _siblings: [document_tree]
+    children: [document_tree]
+    creationDate: Int
+    filename: String
+    fullpath: String
+    id: ID
+    modificationDate: Int
+    parent: document_tree
+    translations(defaultLanguage: String): [document_translation]
+}
+
+type document_hardlink implements element {
+    _siblings: [document_tree]
+    action: String
+    children: [document_tree]
+    childrenFromSource: Boolean
+    controller: String
+    creationDate: Int
+    fullpath: String
+    id: ID
+    modificationDate: Int
+    parent: document_tree
+    properties(
+        "comma seperated list of key names"
+        keys: [String]
+    ): [ElementProperty]
+    propertiesFromSource: Boolean
+    published: Boolean
+    sourceId: Int
+    tags(name: String): [element_tag]
+    target: AnyDocumentTarget
+    template: String
+    translations(defaultLanguage: String): [document_translation]
+    type: String
+}
+
+type document_link implements element {
+    _siblings: [document_tree]
+    action: String
+    children: [document_tree]
+    controller: String
+    creationDate: Int
+    direct: String
+    fullpath: String
+    href: String
+    id: ID
+    internal: Int
+    internalType: String
+    linktype: String
+    modificationDate: Int
+    object: AnyTarget
+    parent: document_tree
+    properties(
+        "comma seperated list of key names"
+        keys: [String]
+    ): [ElementProperty]
+    published: Boolean
+    tags(name: String): [element_tag]
+    template: String
+    translations(defaultLanguage: String): [document_translation]
+    type: String
+}
+
+type document_page implements element {
+    _siblings: [document_tree]
+    action: String
+    children: [document_tree]
+    controller: String
+    creationDate: Int
+    description: String
+    editables(
+        "Whether inherited editables should be fetched or not."
+        getInheritedValues: Boolean = false
+    ): [DocumentElement]
+    elements: [DocumentElement]
+    fullpath: String
+    id: ID
+    modificationDate: Int
+    parent: document_tree
+    properties(
+        "comma seperated list of key names"
+        keys: [String]
+    ): [ElementProperty]
+    published: Boolean
+    rendered(
+        "Attributes passed into the controller/action"
+        attributes: [KeyValue] = [],
+        "Options passed into the controller/action"
+        options: [KeyValue] = [],
+        "Query Params passed into the controller/action"
+        query: [KeyValue] = [],
+        "Disable Layout Rendering"
+        use_layout: Boolean
+    ): String
+    tags(name: String): [element_tag]
+    template: String
+    title: String
+    translations(defaultLanguage: String): [document_translation]
+    type: String
+}
+
+type document_snippet implements element {
+    _siblings: [document_tree]
+    action: String
+    children: [document_tree]
+    controller: String
+    creationDate: Int
+    description: String
+    editables(
+        "Whether inherited editables should be fetched or not."
+        getInheritedValues: Boolean = false
+    ): [DocumentElement]
+    elements: [DocumentElement]
+    fullpath: String
+    id: ID
+    modificationDate: Int
+    parent: document_tree
+    properties(
+        "comma seperated list of key names"
+        keys: [String]
+    ): [ElementProperty]
+    published: Boolean
+    rendered(
+        "Attributes passed into the controller/action"
+        attributes: [KeyValue] = [],
+        "Options passed into the controller/action"
+        options: [KeyValue] = [],
+        "Query Params passed into the controller/action"
+        query: [KeyValue] = [],
+        "Disable Layout Rendering"
+        use_layout: Boolean
+    ): String
+    tags(name: String): [element_tag]
+    template: String
+    title: String
+    translations(defaultLanguage: String): [document_translation]
+    type: String
+}
+
+type document_translation {
+    id: Int
+    language: String
+    target: document_tree
+}
+
+type element_metadata_item_6559f52b7227a {
+    name: String
+    value: String
+}
+
+type element_metadata_item_6559f52b724cb {
+    name: String
+    value: String
+}
+
+type element_metadata_item_6559f52b72744 {
+    name: String
+    value: String
+}
+
+type element_tag {
+    id: ID
+    name: String
+    path: String
+}
+
+type fieldcollection_stepIngredient {
+    amount: QuantityValue
+    ingredient: fieldcollection_stepIngredient_ingredient
+}
+
+type hotspotimage {
+    crop: HotspotCrop
+    hotspots: [HotspotHotspot]
+    image: asset
+    marker: [HotspotMarker]
+}
+
+type object_ingredient implements element {
+    _siblings(
+        "list of object types (object, variant, folder)"
+        objectTypes: [String]
+    ): [object_tree]
+    children(
+        "list of object types (object, variant, folder)"
+        objectTypes: [String]
+    ): [object_tree]
+    childrenSortBy: String
+    classname: String
+    creationDate: Int
+    id: ID
+    index: Int
+    modificationDate: Int
+    name(language: String): String
+    objectType: String
+    parent: object_tree
+    properties(
+        "comma separated list of key names"
+        keys: [String]
+    ): [ElementProperty]
+    tags(name: String): [element_tag]
+}
+
+type object_meal implements element {
+    _siblings(
+        "list of object types (object, variant, folder)"
+        objectTypes: [String]
+    ): [object_tree]
+    children(
+        "list of object types (object, variant, folder)"
+        objectTypes: [String]
+    ): [object_tree]
+    childrenSortBy: String
+    classname: String
+    creationDate: Int
+    desciption(language: String): String
+    id: ID
+    images: [hotspotimage]
+    index: Int
+    modificationDate: Int
+    name(language: String): String
+    objectType: String
+    outro(language: String): String
+    parent: object_tree
+    properties(
+        "comma separated list of key names"
+        keys: [String]
+    ): [ElementProperty]
+    recipes: [object_meal_recipes]
+    tags(name: String): [element_tag]
+}
+
+type object_meal_recipes {
+    element: object_recipe
+    metadata: [element_metadata_item_6559f52b7227a]
+}
+
+type object_recipe implements element {
+    _siblings(
+        "list of object types (object, variant, folder)"
+        objectTypes: [String]
+    ): [object_tree]
+    children(
+        "list of object types (object, variant, folder)"
+        objectTypes: [String]
+    ): [object_tree]
+    childrenSortBy: String
+    classname: String
+    creationDate: Int
+    desciption(language: String): String
+    id: ID
+    images: [hotspotimage]
+    index: Int
+    modificationDate: Int
+    name(language: String): String
+    objectType: String
+    parent: object_tree
+    properties(
+        "comma separated list of key names"
+        keys: [String]
+    ): [ElementProperty]
+    steps: [object_recipe_steps]
+    tags(name: String): [element_tag]
+}
+
+type object_recipe_steps {
+    element: object_rescipeStep
+    metadata: [element_metadata_item_6559f52b724cb]
+}
+
+type object_rescipeStep implements element {
+    _siblings(
+        "list of object types (object, variant, folder)"
+        objectTypes: [String]
+    ): [object_tree]
+    children(
+        "list of object types (object, variant, folder)"
+        objectTypes: [String]
+    ): [object_tree]
+    childrenSortBy: String
+    classname: String
+    creationDate: Int
+    desciption(language: String): String
+    id: ID
+    images: [hotspotimage]
+    index: Int
+    ingredientList: [object_rescipeStep_ingredientList]
+    ingredients: [object_rescipeStep_ingredients]
+    modificationDate: Int
+    name(language: String): String
+    objectType: String
+    parent: object_tree
+    properties(
+        "comma separated list of key names"
+        keys: [String]
+    ): [ElementProperty]
+    tags(name: String): [element_tag]
+}
+
+type object_rescipeStep_ingredients {
+    element: object_ingredient
+    metadata: [element_metadata_item_6559f52b72744]
+}
+
+type object_stepIngredient implements element {
+    _siblings(
+        "list of object types (object, variant, folder)"
+        objectTypes: [String]
+    ): [object_tree]
+    children(
+        "list of object types (object, variant, folder)"
+        objectTypes: [String]
+    ): [object_tree]
+    childrenSortBy: String
+    classname: String
+    creationDate: Int
+    id: ID
+    index: Int
+    modificationDate: Int
+    objectType: String
+    parent: object_tree
+    properties(
+        "comma separated list of key names"
+        keys: [String]
+    ): [ElementProperty]
+    tags(name: String): [element_tag]
+}
+
+type property_asset {
+    asset: asset
+    name: String
+    type: String
+}
+
+type property_checkbox {
+    checked: Boolean
+    name: String
+    type: String
+}
+
+type property_document {
+    document: Document
+    name: String
+    type: String
+}
+
+type property_object {
+    name: String
+    object: hotspot_metadata_object
+    type: String
+}
+
+type property_select {
+    name: String
+    text: String
+    type: String
+}
+
+type property_text {
+    name: String
+    text: String
+    type: String
+}
+
+type property_textarea {
+    name: String
+    text: String
+    type: String
+}
+
+type resolutions {
+    resolution: Float
+    url: String
+}
+
+type srcset {
+    descriptor: String
+    resolutions(
+        "List of resolution types [2, 5, ...]"
+        types: [Float] = [2.0]
+    ): [resolutions]
+    url: String
+}
+
+input KeyValue {
+    key: String
+    value: String
+}
